@@ -48,3 +48,13 @@ Inputs:
 actually will concatenate history messages and current message, then send to model
 
 ![Snipaste_2024-01-22_01-46-53](https://github.com/SLAPaper/ComfyUI-QianFan-LLM/assets/7543632/618fad3c-ccff-4b26-82d1-02681f826076)
+
+#### Completion
+
+Document: [千帆大模型平台-SDK](https://cloud.baidu.com/doc/WENXINWORKSHOP/s/vlmokjd30)
+
+Inputs:
+
+- model: selection of use model
+- prompt: prompt text
+- endpoint: optional, only activate when model set to ENDPOINT
