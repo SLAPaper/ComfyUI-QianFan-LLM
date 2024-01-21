@@ -19,8 +19,12 @@ ComfyUI nodes utilizing LLM models on QianFan Platform （百度智能云千帆�
 
 Implemented: PlayGround
 
+![Snipaste_2024-01-22_01-47-43](https://github.com/SLAPaper/ComfyUI-QianFan-LLM/assets/7543632/1e42bb59-136d-49c0-b599-c7ee969fb673)
+
 ### qianfan （千帆大模型平台）
 
 [千帆大模型平台-SDK](https://cloud.baidu.com/doc/WENXINWORKSHOP/s/wlmhm7vuo)
 
-Implemented: None
+Implemented: Chat
+
+![Snipaste_2024-01-22_01-46-53](https://github.com/SLAPaper/ComfyUI-QianFan-LLM/assets/7543632/618fad3c-ccff-4b26-82d1-02681f826076)
