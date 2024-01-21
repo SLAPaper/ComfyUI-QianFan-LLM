@@ -58,3 +58,5 @@ Inputs:
 - model: selection of use model
 - prompt: prompt text
 - endpoint: optional, only activate when model set to ENDPOINT
+
+![Snipaste_2024-01-22_03-48-08](https://github.com/SLAPaper/ComfyUI-QianFan-LLM/assets/7543632/a541431d-c872-4f1a-bcd2-48114fbe96d9)
