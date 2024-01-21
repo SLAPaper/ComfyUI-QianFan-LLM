@@ -31,6 +31,7 @@ def set_env():
 class PlayGround:
     """
     QianFan AppBuilder PlayGround Node
+    SDK doc: https://cloud.baidu.com/doc/AppBuilder/s/zlqgd1ii7
 
     Class methods
     -------------
@@ -98,13 +99,21 @@ class PlayGround:
     # INPUT_IS_LIST = True
 
     # @classmethod
-    # def IS_CHANGED(s, model: str, prompt_template: str, params_yaml: str) -> tg.Hashable:
+    # def IS_CHANGED(
+    #     s,
+    #     model: str,
+    #     prompt_template: str,
+    #     params_yaml: str,
+    # ) -> tg.Hashable:
     #     """self defined input change detection function"""
     #     pass
 
     @classmethod
     def VALIDATE_INPUTS(
-        s, model: str, prompt_template: str, params_yaml: str
+        s,
+        model: str,
+        prompt_template: str,
+        params_yaml: str,
     ) -> tg.Literal[True] | str:
         """self defined validation function"""
         try:
@@ -122,10 +131,13 @@ class PlayGround:
 
     # OUTPUT_NODE = False
 
-    CATEGORY = "QianFan_AppBuilder"
+    CATEGORY = "QianFan/AppBuilder"
 
     def playground(
-        self, model: str, prompt_template: str, params_yaml: str
+        self,
+        model: str,
+        prompt_template: str,
+        params_yaml: str,
     ) -> tuple[str]:
         """Execute appbuilder playground model"""
         set_env()
@@ -137,11 +149,11 @@ class PlayGround:
 
 
 _NODE_CLASS_MAPPINGS = {
-    "QFAB Playground": PlayGround,
+    "QianFan AB Playground": PlayGround,
 }
 
 _NODE_DISPLAY_NAME_MAPPINGS = {
-    "QFAB Playground": "QianFan AppBuilder Playground",
+    "QianFan AB Playground": "QianFan AppBuilder Playground",
 }
 
 __all__ = ["_NODE_CLASS_MAPPINGS", "_NODE_DISPLAY_NAME_MAPPINGS"]
