@@ -12,17 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .dialog_summary import DialogSummary
-from .playground import PlayGround
 
-_NODE_CLASS_MAPPINGS = {
-    "QianFan AB Playground": PlayGround,
-    "QianFan AB Dialog Summary": DialogSummary,
-}
+import os
 
-_NODE_DISPLAY_NAME_MAPPINGS = {
-    "QianFan AB Playground": "QianFan AppBuilder Playground",
-    "QianFan AB Dialog Summary": "QianFan AppBuilder Dialog Summary",
-}
+from ..config import QIANFAN_CONFIG, reload_config
 
-__all__ = ["_NODE_CLASS_MAPPINGS", "_NODE_DISPLAY_NAME_MAPPINGS"]
+
+def set_env():
+    """Set environment vars"""
+    reload_config()
+
+    os.environ["APPBUILDER_TOKEN"] = QIANFAN_CONFIG.get("appbuilder_api_key")
