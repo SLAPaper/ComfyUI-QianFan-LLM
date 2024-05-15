@@ -20,7 +20,19 @@ ComfyUI nodes utilizing LLM models on QianFan Platform （百度智能云千帆�
 
 Document: [千帆AppBuilder-SDK](https://cloud.baidu.com/doc/AppBuilder/s/Glqb6dfiz)
 
-Implemented: PlayGround
+Implemented: **DialogSummary**, **PlayGround**
+
+#### DialogSummary
+
+Inputs:
+
+- model: selection of use model
+- dialog: the dialog string to be summerized
+
+![Snipaste_2024-05-16_01-20-26](https://github.com/SLAPaper/ComfyUI-QianFan-LLM/assets/7543632/5a98aed7-0ab4-482a-b493-20e66b61fe65)
+
+Hint: only some of the models would response with pure JSON format that can be parsed, choose wisely
+
 
 #### PlayGround
 
@@ -36,9 +48,11 @@ Inputs:
 
 Document: [千帆大模型平台-SDK](https://cloud.baidu.com/doc/WENXINWORKSHOP/s/wlmhm7vuo)
 
-Implemented: Chat
+Implemented: **Chat**, **Completion**
 
 #### Chat
+
+Document: [千帆大模型平台-SDK](https://cloud.baidu.com/doc/WENXINWORKSHOP/s/xlmokikxe)
 
 Inputs:
 
