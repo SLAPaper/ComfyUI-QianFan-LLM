@@ -33,7 +33,6 @@ Inputs:
 
 Hint: only some of the models would response with pure JSON format that can be parsed, choose wisely
 
-
 #### PlayGround
 
 Inputs:
