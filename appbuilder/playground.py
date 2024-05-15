@@ -17,7 +17,7 @@ import typing as tg
 import appbuilder
 import yaml
 
-from .common import set_env
+from .common import get_model_list, set_env
 
 
 class PlayGround:
@@ -70,7 +70,7 @@ class PlayGround:
         """
         return {
             "required": {
-                "model": (["eb-turbo-appbuilder", "ernie-bot-4"],),
+                "model": (get_model_list(["chat"]),),
                 "prompt_template": (
                     "STRING",
                     {

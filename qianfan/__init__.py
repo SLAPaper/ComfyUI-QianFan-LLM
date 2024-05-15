@@ -12,13 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 import os
 import typing as tg
 
 import qianfan
+import qianfan.resources
 import yaml
 
 from ..config import QIANFAN_CONFIG, reload_config
+
+# Set up logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter(
+    "%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s"
+)
+ch.setFormatter(formatter)
+logger.addHandler(ch)
 
 
 def set_env():
@@ -27,6 +40,9 @@ def set_env():
 
     os.environ["QIANFAN_ACCESS_KEY"] = QIANFAN_CONFIG.get("iam_ak")
     os.environ["QIANFAN_SECRET_KEY"] = QIANFAN_CONFIG.get("iam_sk")
+
+
+set_env()
 
 
 class Chat:
@@ -82,23 +98,7 @@ class Chat:
                 "model": (
                     [
                         "DEFAULT",
-                        "ERNIE-Bot-4",
-                        "ERNIE-Bot-8k",
-                        "ERNIE-Bot",
-                        "ERNIE-Bot-turbo",
-                        "EB-turbo-AppBuilder",
-                        "Yi-34B-Chat",
-                        "BLOOMZ-7B",
-                        "Qianfan-BLOOMZ-7B-compressed",
-                        "Llama-2-7b-chat",
-                        "Llama-2-13b-chat",
-                        "Llama-2-70b-chat",
-                        "Qianfan-Chinese-Llama-2-7B",
-                        "Qianfan-Chinese-Llama-2-13B",
-                        "ChatGLM2-6B-32K",
-                        "XuanYuan-70B-Chat-4bit",
-                        "ChatLaw",
-                        "AquilaChat-7B",
+                        *sorted(qianfan.ChatCompletion.models()),
                         "ENDPOINT",
                     ],
                 ),
@@ -257,25 +257,7 @@ class Completion:
                 "model": (
                     [
                         "DEFAULT",
-                        "ERNIE-Bot-4",
-                        "ERNIE-Bot-8k",
-                        "ERNIE-Bot",
-                        "ERNIE-Bot-turbo",
-                        "EB-turbo-AppBuilder",
-                        "Yi-34B-Chat",
-                        "BLOOMZ-7B",
-                        "Qianfan-BLOOMZ-7B-compressed",
-                        "Llama-2-7b-chat",
-                        "Llama-2-13b-chat",
-                        "Llama-2-70b-chat",
-                        "Qianfan-Chinese-Llama-2-7B",
-                        "Qianfan-Chinese-Llama-2-13B",
-                        "ChatGLM2-6B-32K",
-                        "XuanYuan-70B-Chat-4bit",
-                        "ChatLaw",
-                        "AquilaChat-7B",
-                        "SQLCoder-7B",
-                        "CodeLlama-7b-Instruct",
+                        *sorted(qianfan.Completion.models()),
                         "ENDPOINT",
                     ],
                 ),
@@ -308,7 +290,7 @@ class Completion:
     ) -> tg.Literal[True] | str:
         """self defined validation function"""
         if model == "ENDPOINT" and not endpoint:
-            return "endpoint model requires an endpoint"
+            return "ENDPOINT model requires an endpoint"
 
         return True
 

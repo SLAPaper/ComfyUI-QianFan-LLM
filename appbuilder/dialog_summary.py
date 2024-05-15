@@ -12,10 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import appbuilder
+import logging
 import json
 
-from .common import set_env
+import appbuilder
+
+from .common import get_model_list, set_env
+
+# Set up logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter(
+    "%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s"
+)
+ch.setFormatter(formatter)
+logger.addHandler(ch)
 
 
 class DialogSummary:
@@ -34,7 +47,7 @@ class DialogSummary:
         """
         return {
             "required": {
-                "model": (["eb-turbo-appbuilder", "ernie-bot-4"],),
+                "model": (get_model_list(["chat"]),),
                 "dialog": (
                     "STRING",
                     {
@@ -75,12 +88,17 @@ class DialogSummary:
 
         ds = appbuilder.DialogSummary(model=model)
         params = appbuilder.Message(dialog)
-        resp = ds(params, stream=False)
-        data = json.loads(resp.content)
+        resp: appbuilder.core.message.Message = ds(params, stream=False)
+
+        try:
+            data = json.loads(resp.content)
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse json: {resp.content}, reason: {repr(e)}")
+            data = {}
 
         return (
-            data["诉求"],
-            data["回应"],
-            data["解决情况"],
+            data.get("诉求", ""),
+            data.get("回应", ""),
+            data.get("解决情况", ""),
             resp.content,
         )

@@ -2,6 +2,8 @@
 
 ComfyUI nodes utilizing LLM models on QianFan Platform （百度智能云千帆大模型平台）
 
+![Qianfan-LLM](img/QianfanLLM.png)
+
 ## NOTICE: This Project is WIP, send issue if you want some missing features
 
 ## Pre-requisites
